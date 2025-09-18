@@ -161,7 +161,7 @@ export function ChessBoard({
       const response = await chessApi.games.get(id)
       if (response.success && response.data) {
         console.log('✅ Game data loaded:', response.data)
-        const newFen = response.data.current_fen || INITIAL_FEN
+        const newFen = (response.data as any).current_fen || INITIAL_FEN
         
         // Load position into chess engine
         chess.load(newFen)
